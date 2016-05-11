@@ -19,7 +19,6 @@ Route::get('home', ['middleware' => 'firstMiddleware', function () {
     return view('welcome');
 }]);
 
-Route::get('new', 'HomeController@show');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
