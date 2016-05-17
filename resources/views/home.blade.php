@@ -38,7 +38,7 @@
         <div class="col-md-4">
             <table class="table table-striped">
             <tr><th>Done</th><th>Task Name</th><th>Remove</th><th>Priority</th>
-                <tr ng-repeat='todo in todos'>
+                <tr ng-repeat="todo in todos | orderBy:'priority'">
                     <td><input type="checkbox" ng-true-value="1" ng-false-value="'0'" ng-model="todo.done" ng-change="updateTodo(todo)"></td>
 
                     <td ng-class="todo.done ? 'item-done':'item-normal'"><% todo.title %></td>
