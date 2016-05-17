@@ -1,14 +1,13 @@
-<?php
-
+<?php 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Todo;
+use Request;
 
-use App\Http\Requests;
+class TodosController extends Controller {
 
-class TodosController extends Controller
-{
-    
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
@@ -38,6 +37,7 @@ class TodosController extends Controller
 	public function update($id) {
 		$todo = Todo::find($id);
 		$todo->done = Request::input('done');
+		$todo->priority = Request::input('priority');
 		$todo->save();
 
 		return $todo;
@@ -54,3 +54,4 @@ class TodosController extends Controller
 	}
 
 }
+

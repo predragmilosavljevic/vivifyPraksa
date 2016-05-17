@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home', ['middleware' => 'firstMiddleware', function () {
-    return view('welcome');
-}]);
-
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('home', 'HomeController@index');
+
+Route::resource('api/todos','TodosController');
+
+Route::get('todoapp','TodoAppController@index');
