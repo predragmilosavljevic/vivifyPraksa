@@ -41,7 +41,7 @@
                 <tr ng-repeat="todo in todos | orderBy:'-priority'">
                     <td><input type="checkbox" ng-true-value="1" ng-false-value="'0'" ng-model="todo.done" ng-change="updateTodo(todo)"></td>
 
-                    <td ng-class="todo.done ? 'item-done':'item-normal'"><% todo.title %></td>
+                    <td ng-class="{'item-done' : todo.done}"><% todo.title %></td>
 
                     <td><button class="btn btn-danger btn-xs" ng-click="deleteTodo($index)">  <span class="glyphicon glyphicon-trash" ></span></button></td>
                     <td><input type="checkbox" ng-true-value="1" ng-false-value="'0'" ng-model="todo.priority" ng-change="updateTodo(todo)"></td>

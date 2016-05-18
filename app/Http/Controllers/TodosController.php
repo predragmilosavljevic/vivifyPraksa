@@ -5,6 +5,9 @@ use App\Http\Controllers\Controller;
 use App\Todo;
 use Request;
 
+use Illuminate\Support\Facades\Auth;
+
+
 class TodosController extends Controller {
 
 	/**
@@ -13,9 +16,10 @@ class TodosController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
-
-		$todos = Todo::orderBy('priority', 'desc')->get();
-		return $todos;
+		   
+			
+			$todos = Auth::user()->tasks()->orderBy('priority', 'desc')->get();
+			return $todos;		
 	}
 
 	/**
@@ -24,7 +28,7 @@ class TodosController extends Controller {
 	 * @return Response
 	 */
 	public function store() {
-		$todo = Todo::create(Request::all());
+		$todo = Auth::user()->tasks()->create(Request::all());
 		return $todo;
 	}
 
@@ -37,7 +41,7 @@ class TodosController extends Controller {
 	public function update($id) {
 		$todo = Todo::find($id);
 		$todo->done = Request::input('done');
-		$todo->priority = Request::input('priority');
+		$todo->priority = Request::input('priority');		
 		$todo->save();
 
 		return $todo;
