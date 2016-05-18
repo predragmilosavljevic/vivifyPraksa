@@ -14,7 +14,7 @@ class TodosController extends Controller {
 	 */
 	public function index() {
 
-		$todos = Todo::all();
+		$todos = Todo::orderBy('priority', 'desc')->get();
 		return $todos;
 	}
 
